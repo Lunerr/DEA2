@@ -1,4 +1,6 @@
 const patron = require('patron.js');
+const items = require('../../data/items.json');
+const ItemService = require('../../services/ItemService.js');
 
 class Store extends patron.Command {
   constructor() {
@@ -10,7 +12,14 @@ class Store extends patron.Command {
   }
 
   async run(msg, args) {
-    return msg.channel.createMessage('**Purchasable Items:**' + '\nOld Crate: $50.00\nBronze Crate: $1,000.00\nSilver Crate: $5,000.00\nGold Crate: $20,000.00\nPlatinum Crate: $50,000.00\nRuby Crate: $750,000.00\nEmerald Crate: $850,000.00\nSapphire Crate: $900,000.00\nRainbow Crate: $127,500,000.00\nWhite Crate: $500,000,000.00\nBlack Crate: $500,000,000.00\nHot Crate: $666,666,666.00\nCool Crate: $777,777,777.00');
+    const crates = items.filter(x => x.price !== undefined);
+    let reply = '';
+
+    for (let i = 0; i < crates.length; i++) {
+      reply += '**' + ItemService.capitializeWords(crates[i].names[0]) + ':** ' + crates[i].price.USD() + '\n';
+    }
+
+    return msg.channel.createMessage(reply, { title: 'Purchasable Items' });
   }
 }
 

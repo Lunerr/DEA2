@@ -8,15 +8,15 @@ class ItemService {
     const roll = Random.roll();
     const rollWeapon = Random.nextInt(1, 747);
     const rollAmmo = Random.nextInt(1, 340);
-    const weapons = items.filter(x => x.type === 'gun' || x.type === 'knife').sort((a, b) => a.crateOdds - b.crateOdds);
-    const ammunation = items.filter(x => x.type === 'bullet').sort((a, b) => a.crateOdds - b.crateOdds);
+    const weapons = items.filter(x => x.type === 'gun' || x.type === 'knife').sort((a, b) => a.crate_odds - b.crate_odds);
+    const ammunation = items.filter(x => x.type === 'bullet').sort((a, b) => a.crate_odds - b.crate_odds);
     let cumulativeWeapons = 0;
     let cumulativeAmmunition = 0;
 
-    if (roll <= crate.itemOdds) {
+    if (roll <= crate.item_odds) {
       for (let i = 0; i < weapons.length; i++) {
         const weapon = weapons[i];
-        cumulativeWeapons += weapon.crateOdds;
+        cumulativeWeapons += weapon.crate_odds;
         if (rollWeapon <= cumulativeWeapons) {
           return weapon;
         }
@@ -24,7 +24,7 @@ class ItemService {
     } else {
       for (let i = 0; i < ammunation.length; i++) {
         const ammo = ammunation[i];
-        cumulativeAmmunition += ammo.crateOdds;
+        cumulativeAmmunition += ammo.crate_odds;
         if (rollAmmo <= cumulativeAmmunition) {
           return ammo;
         }
@@ -49,14 +49,14 @@ class ItemService {
 
   fish(weapon) {
     const roll = Random.roll();
-    const food = items.filter(x => x.type === 'fish').sort((a, b) => a.acquireOdds - b.acquireOdds);
+    const food = items.filter(x => x.type === 'fish').sort((a, b) => a.acquire_odds - b.acquire_odds);
     const rollOdds = Random.nextInt(1, 109);
     let cumulative = 0;
 
     if (roll <= weapon.accuracy) {
       for (let i = 0; i < food.length; i++) {
         const fish = food[i];
-        cumulative += fish.acquireOdds;
+        cumulative += fish.acquire_odds;
         if (rollOdds <= cumulative) {
           return fish;
         }
@@ -66,14 +66,14 @@ class ItemService {
 
   hunt(weapon) {
     const roll = Random.roll();
-    const food = items.filer(x => x.type === 'meat').sort((a, b) => a.acquireOdds - b.acquireOdds);
+    const food = items.filer(x => x.type === 'meat').sort((a, b) => a.acquire_odds - b.acquire_odds);
     const rollOdds = Random.nextInt(1, 84);
     let cumulative = 0;
 
     if (roll <= weapon.accuracy) {
       for (let i = 0; i < food.length; i++) {
         const meat = food[i];
-        cumulative += meat.acquireOdds;
+        cumulative += meat.acquire_odds;
         if (rollOdds <= cumulative) {
           return meat;
         }
@@ -105,7 +105,7 @@ class ItemService {
 
   capitializeWords(str) {
     if (isNaN(str)) {
-      return str.replace(Constants.data.regexes.capitalize, (x) => x.charAt(0).toUpperCase() + x.substr(1));
+      return str.replace('_', ' ').replace(Constants.data.regexes.capitalize, (x) => x.charAt(0).toUpperCase() + x.substr(1));
     }
 
     return str;

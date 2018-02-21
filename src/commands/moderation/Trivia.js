@@ -19,7 +19,7 @@ class Trivia extends patron.Command {
 
     await msg.channel.createMessage(question, { title: 'Trivia!' });
 
-    const result = await msg.channel.awaitMessages((m) => m.content.includes(answer), { time: 5000, maxMatches: 1 });
+    const result = await msg.channel.awaitMessages((m) => m.content.includes(answer), { time: 90000, maxMatches: 1 });
 
     if (result.size >= 1) {
       const prize = Random.nextFloat(100, 1000);

@@ -16,6 +16,10 @@ class Answers extends patron.Command {
 
     for (const key in msg.dbGuild.trivia) {
       description += (position++) + '. ' + key.boldify() + ': ' + msg.dbGuild.trivia[key] + '\n';
+      if (description.length > 1024) {
+        await msg.author.tryDM(description, { title: 'Trivia Questions' });
+        description = '';
+      }
     }
 
     await msg.author.tryDM(description, { title: 'Trivia Answers' });

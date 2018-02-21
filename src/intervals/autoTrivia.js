@@ -14,7 +14,7 @@ module.exports = async (client) => {
 
       const guild = client.guilds.get(guilds[i].guildId);
 
-      if (guild.systemChannel === null) {
+      if (guild.mainChannel === undefined) {
         continue;
       }
 
@@ -23,17 +23,17 @@ module.exports = async (client) => {
       const answerIndex = questions.findIndex(x => x === question);
       const answer = Object.values(guilds[i].trivia)[answerIndex];
 
-      await guild.systemChannel.createMessage(question, { title: 'Trivia!' });
+      await guild.mainChannel.createMessage(question, { title: 'Trivia!' });
 
-      const result = await guild.systemChannel.awaitMessages((m) => m.content.includes(answer), { time: 90000, maxMatches: 1 });
+      const result = await guild.mainChannel.awaitMessages((m) => m.content.includes(answer), { time: 90000, maxMatches: 1 });
 
       if (result.size >= 1) {
         const prize = Random.nextInt(500, 10000);
         await db.userRepo.modifyCash(guilds[i], result.first().member, prize);
-        await guild.systemChannel.createMessage('Congratulations ' + result.first().author.tag.boldify() + ' for winning ' + prize.USD() + ' in trivia!');
+        await guild.mainChannel.createMessage('Congratulations ' + result.first().author.tag.boldify() + ' for winning ' + prize.USD() + ' in trivia!');
       }
   
-      await guild.systemChannel.createMessage('Damn you fuckers were that slow and retarded FINE I\'ll give you the answer it\'s: ' + answer.boldify());
+      await guild.mainChannel.createMessage('Damn you fuckers were that slow and retarded FINE I\'ll give you the answer it\'s: ' + answer.boldify());
     }
 
     await PromiseUtil.delay(15000);

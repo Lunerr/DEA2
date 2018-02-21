@@ -145,9 +145,15 @@ discord.Message.prototype.sendEmbed = function (commandEmbed, options = {}) {
 
 Object.defineProperty(discord.Guild.prototype, 'mainChannel', {
   get: function () {
-    return this.channels.findValue((v) => {
-      return v.type === 'text' && (v.name === 'general' || v.name.includes('main'));
+    const generalChannel = this.channels.find((x) => { 
+      x.name === 'general' && (x.name === 'general' || x.name.includes('main'));
     });
+
+    if (generalChannel !== null) {
+      return generalChannel;
+    }
+
+    return this.channels.filter(x => x.type === 'text').sort((a, b) => a.createdAt - b.createdAt).first();
   }
 });
 

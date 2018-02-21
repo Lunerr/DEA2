@@ -21,11 +21,19 @@ class Item extends patron.Command {
 
   async run(msg, args) {
     const unwantedKeys = ['names', 'description', 'type'];
-    let description = '**Description:** ' + args.item.description + '\n**Type:** ' + ItemService.capitializeWords(args.item.type) + '\n';
+    let description = '';
 
     for (const key in args.item) {
-      if (unwantedKeys.includes(key) === false) {
-        description += '**' + ItemService.capitializeWords(key) + ':** ' + ItemService.capitializeWords(args.item[key]) + '\n';
+      if (args.item[key] !== null) {
+        switch (key) {
+          case 'price':
+            description += '**Price:** ' + args.item[key].USD() + '\n';
+            break;
+          case 'names':
+            break;
+          default:
+            description += '**' + ItemService.capitializeWords(key) + ':** ' + ItemService.capitializeWords(args.item[key]) + '\n';
+        }
       }
     }
 
