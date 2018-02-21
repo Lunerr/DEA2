@@ -16,6 +16,8 @@ class Guild {
     this.misc = {
       caseNumber: 1
     };
+    this.autoTrivia = true;
+    this.trivia = {};
   }
 }
 

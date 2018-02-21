@@ -18,6 +18,10 @@ class Random {
   static arrayTest(array) {
     return array[(0)];
   }
+
+  static objectProp(object) {
+    return Object.keys(object)[Math.floor(Math.random()*Object.keys(object).length)];
+  }
 }
 
 module.exports = Random;

@@ -24,6 +24,7 @@ client.on('message', (msg) => {
     if (msg.guild !== null) {
       msg.dbUser = await db.userRepo.getUser(msg.author.id, msg.guild.id);
       msg.dbGuild = await db.guildRepo.getGuild(msg.guild.id);
+      ChatService.applyCash(msg);
     }
 
     const result = await handler.run(msg, Constants.data.misc.prefix);

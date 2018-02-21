@@ -16,7 +16,7 @@ class Hunt extends patron.Command {
           key: 'item',
           type: 'item',
           example: 'intervention',
-          preconditions: ['donthave', { name: 'nottype', options: { type: 'fish', type2: 'meat', type3: 'launcher' } }],
+          preconditions: ['donthave', { name: 'nottype', options: { types: ['fish', 'meat'] } }],
           remainder: true
         })
       ]

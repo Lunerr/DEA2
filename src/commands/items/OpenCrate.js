@@ -16,7 +16,7 @@ class OpenCrate extends patron.Command {
           key: 'item',
           type: 'item',
           example: 'bronze crate',
-          preconditions: ['donthave', { name: 'nottype', options: { type: 'crate' } }],
+          preconditions: ['donthave', { name: 'nottype', options: { types: ['crate'] } }],
           remainder: true
         })
       ]

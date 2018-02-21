@@ -13,7 +13,8 @@ class ItemLb extends patron.Command {
   }
 
   async run(msg) {
-    const users = await db.userRepo.findMany({ guildId: msg.guild.id });
+    const getUsers = await db.userRepo.findMany({ guildId: msg.guild.id });
+    const users = getUsers.filter(x => Object.values(x.inventory).length > 0);
     const reducer = (accumulator, currentValue) => accumulator + currentValue;
 
     users.sort((a, b) => Object.values(b.inventory).reduce(reducer) - Object.values(a.inventory).reduce(reducer));

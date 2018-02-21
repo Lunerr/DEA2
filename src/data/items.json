@@ -107,6 +107,7 @@
   {
     "names": ["glock"],
     "type": "gun",
+    "bullet": "pistol ammo",
     "description": "Weakest gun in town. Man up a bit you puss.",
     "damage": 15,
     "accuracy": 30,
@@ -115,6 +116,7 @@
   {
     "names": ["rusty pistol"],
     "type": "gun",
+    "bullet": "pistol ammo",
     "description": "This pistol was found in an ocean. Covered in rust, seems if it would never work",
     "damage": 1,
     "accuracy": 1,
@@ -123,6 +125,7 @@
   {
     "names": ["pump action", "pump"],
     "type": "gun",
+    "bullet": "shotgun shell",
     "description": "Get those niggers off your lawn, *wait that was racist, fuck*.",
     "damage": 60,
     "accuracy": 35,
@@ -131,14 +134,16 @@
   {
     "names": ["water gun"],
     "type": "gun",
+    "bullet": "water",
     "description": "Dylan got wet boi",
     "damage": 99,
     "accuracy": 99,
-    "crateOdds": 0
+    "crateOdds": 1
   },
   {
     "names": ["revolver"],
     "type": "gun",
+    "bullet": "pistol ammo",
     "description": "Slam a nigga's cock in a bridge so damn hard.",
     "damage": 20,
     "accuracy": 35,
@@ -147,6 +152,7 @@
   {
     "names": ["m1911", "1911"],
     "type": "gun",
+    "bullet": "pistol ammo",
     "description": "The only gun that proves you are a male.",
     "damage": 50,
     "accuracy": 40,
@@ -155,6 +161,7 @@
   {
     "names": ["ar15"],
     "type": "gun",
+    "bullet": "rifle ammo",
     "description": "Assault fire. Assault weapon. Assault feminists. *Oh fuck dude I don't think we are allowed to put that kinda joke.*",
     "damage": 40,
     "accuracy": 50,
@@ -163,6 +170,7 @@
   {
     "names": ["ak-47", "ak47"],
     "type": "gun",
+    "bullet": "rifle ammo",
     "description": "***Starts playing the National anthem of Russia.***",
     "damage": 50,
     "accuracy": 60,
@@ -171,6 +179,7 @@
   {
     "names": ["desert eagle", "deagle"],
     "type": "gun",
+    "bullet": "pistol ammo",
     "description": "The only gun you can tear off a head with.",
     "damage": 60,
     "accuracy": 45,
@@ -179,6 +188,7 @@
   {
     "names": ["barrett M107A1", "barrett m107a1", "barrett", "barrett 50 cal", "barrett .50 cal"],
     "type": "gun",
+    "bullet": "sniper ammo",
     "description": "If you spray this then that confirms you have a tiny pecker.",
     "damage": 75,
     "accuracy": 65,
@@ -187,6 +197,7 @@
   {
     "names": ["intervention"],
     "type": "gun",
+    "bullet": "sniper ammo",
     "description": "The only weapon that affirms you have a large penis.",
     "damage": 90,
     "accuracy": 75,
@@ -194,7 +205,8 @@
   },
   {
     "names": ["rocket launcher", "launcher"],
-    "type": "launcher",
+    "type": "gun",
+    "bullet": "rocket",
     "description": "HELL YEAH BLOW THAT NIGGER UP *wait fuck that's racist.*",
     "damage": 105,
     "accuracy": 70,
@@ -392,9 +404,33 @@
     "crateOdds": 10
   },
   {
-    "names": ["bullet", "bullets"],
+    "names": ["sniper bullet", "sniper ammo", "sniper ammunition", "sniper bullets"],
     "type": "bullet",
     "description": "You can't shoot a gun without bullets, or **CAN YOU?** No Steve, you fucking can't. Retard.",
+    "crateOdds": 60
+  },
+  {
+    "names": ["pistol bullet", "pistol ammo", "pistol ammunition", "pistol bullets"],
+    "type": "bullet",
+    "description": "FFA more like dead server :joy:",
     "crateOdds": 90
+  },
+  {
+    "names": ["shotgun shell", "shotgun shells", "shotgun ammunition", "shotgun bullet", "shotgun bullets", "shotgun ammo"],
+    "type": "bullet",
+    "description": "Imagine coding like lumite ROFL",
+    "crateOdds": 80
+  },
+  {
+    "names": ["rifle bullet", "rifle ammo", "rifle ammunition", "rile bullets"],
+    "type": "bullet",
+    "description": "Vim2meta more like dead channel",
+    "crateOdds": 70
+  },
+  {
+    "names": ["water"],
+    "type": "bullet",
+    "description": "dylan sucks penis at video games",
+    "crateOdds": 40
   }
 ]

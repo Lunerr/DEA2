@@ -16,7 +16,7 @@ class OpenAll extends patron.Command {
           key: 'item',
           type: 'item',
           example: 'bronze crate',
-          preconditions: [{ name: 'nottype', options: { type: 'crate' } }, 'donthave'],
+          preconditions: [{ name: 'nottype', options: { types: ['crate'] } }, 'donthave'],
           remainder: true
         })
       ]

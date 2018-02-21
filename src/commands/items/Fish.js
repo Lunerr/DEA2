@@ -16,7 +16,7 @@ class Fish extends patron.Command {
           key: 'item',
           type: 'item',
           example: 'huntsman knife',
-          preconditions: ['donthave', { name: 'nottype', options: { type: 'knife', type2: 'gun', type3: 'launcher' } }],
+          preconditions: ['donthave', { name: 'nottype', options: { types: ['knife', 'gun'] } }],
           remainder: true
         })
       ]

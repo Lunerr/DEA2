@@ -7,9 +7,9 @@ class ItemService {
   async openCrate(crate) {
     const roll = Random.roll();
     const rollWeapon = Random.nextInt(1, 747);
-    const rollAmmo = Random.nextInt(1, 101);
-    const weapons = Constants.items.crateItems.sort((a, b) => a.crateOdds - b.crateOdds);
-    const ammunation = Constants.items.ammunation.sort((a, b) => a.crateOdds - b.crateOdds);
+    const rollAmmo = Random.nextInt(1, 340);
+    const weapons = items.filter(x => x.type === 'gun' || x.type === 'knife').sort((a, b) => a.crateOdds - b.crateOdds);
+    const ammunation = items.filter(x => x.type === 'bullet').sort((a, b) => a.crateOdds - b.crateOdds);
     let cumulativeWeapons = 0;
     let cumulativeAmmunition = 0;
 
@@ -49,7 +49,7 @@ class ItemService {
 
   fish(weapon) {
     const roll = Random.roll();
-    const food = Constants.items.fish.sort((a, b) => a.acquireOdds - b.acquireOdds);
+    const food = items.filter(x => x.type === 'fish').sort((a, b) => a.acquireOdds - b.acquireOdds);
     const rollOdds = Random.nextInt(1, 109);
     let cumulative = 0;
 
@@ -66,7 +66,7 @@ class ItemService {
 
   hunt(weapon) {
     const roll = Random.roll();
-    const food = Constants.items.meat.sort((a, b) => a.acquireOdds - b.acquireOdds);
+    const food = items.filer(x => x.type === 'meat').sort((a, b) => a.acquireOdds - b.acquireOdds);
     const rollOdds = Random.nextInt(1, 84);
     let cumulative = 0;
 
@@ -82,7 +82,7 @@ class ItemService {
   }
 
   reduceDamage(dbUser, damage) {
-    const armours = items.filter((x) => x.type === 'armour');
+    const armours = items.filter(x => x.type === 'armour');
     let reduce = damage;
     
     for (let i = 0; i < armours.length; i++) {
@@ -92,16 +92,6 @@ class ItemService {
     }
 
     return reduce;
-  }
-
-  async getArmour(memberId, guildId, damage) {
-    const dbUser = await db.userRepo.getUser(args.member.id, msg.guild.id);
-    const armour = items.find((x) => x.type === 'armour');
-
-    for (const key in dbUser.inventory) {
-      const s = (dbUser.inventory[key] > 1 ? 's' : '');
-      description += (dbUser.inventory[key] > 0 ? ItemService.capitializeWords(key) + s + ': ' + dbUser.inventory[key] + '\n' : '');
-    }
   }
 
   async takeInv(KillerId, DeadUserId, GuildId) {
@@ -114,7 +104,11 @@ class ItemService {
   }
 
   capitializeWords(str) {
-    return str.replace(Constants.data.regexes.capitalize, (x) => x.charAt(0).toUpperCase() + x.substr(1));
+    if (isNaN(str)) {
+      return str.replace(Constants.data.regexes.capitalize, (x) => x.charAt(0).toUpperCase() + x.substr(1));
+    }
+
+    return str;
   }
 }
 

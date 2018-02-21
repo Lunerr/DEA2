@@ -20,11 +20,16 @@ class Item extends patron.Command {
   }
 
   async run(msg, args) {
-    if (args.item === undefined) {
-      return msg.createErrorReply('This item doesn\'t exist.');
+    const unwantedKeys = ['names', 'description', 'type'];
+    let description = '**Description:** ' + args.item.description + '\n**Type:** ' + ItemService.capitializeWords(args.item.type) + '\n';
+
+    for (const key in args.item) {
+      if (unwantedKeys.includes(key) === false) {
+        description += '**' + ItemService.capitializeWords(key) + ':** ' + ItemService.capitializeWords(args.item[key]) + '\n';
+      }
     }
 
-    return msg.channel.createMessage('**Name:** ' + ItemService.capitializeWords(args.item.names[0]) + '\n**Description:** ' + args.item.description + (args.item.health !== undefined ? '\n**Health:** ' + args.item.health : '') + (args.item.damage !== undefined ? '\n**Damage:** ' + args.item.damage : '') + (args.item.accuracy !== undefined ? '\n**Accuracy:** ' + args.item.accuracy : '') + (args.item.damageReduction !== undefined ? '\n**Damage Reduction:** ' + args.item.damageReduction : '') + (args.item.crateOdds !== undefined ? '\n**Crate Odds:** ' + args.item.crateOdds : '') + (args.item.itemOdds !== undefined ? '\n**Item Odds:** ' + args.item.itemOdds : '') + (args.item.acquireOdds !== undefined ? '\n**Acquire Odds:** ' + args.item.acquireOdds : '') + (args.item.price !== undefined ? '\n**Price:** ' + args.item.price.USD() : ''));
+    return msg.channel.createMessage(description, { title: ItemService.capitializeWords(args.item.names[0]) });
   }
 }
 

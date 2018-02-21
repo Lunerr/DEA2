@@ -25,7 +25,7 @@ class Stab extends patron.Command {
           key: 'item',
           type: 'item',
           example: 'huntsman knife',
-          preconditions: ['donthave', { name: 'nottype', options: { type: 'knife' } }],
+          preconditions: ['donthave', { name: 'nottype', options: { types: ['knife'] } }],
           remainder: true
         })
       ]
@@ -34,7 +34,6 @@ class Stab extends patron.Command {
 
   async run(msg, args) {
     const roll = Random.roll();
-    const kevlar = Constants.items.armour;
     const dbUser = await db.userRepo.getUser(args.member.id, msg.guild.id);
     const damage = await ItemService.reduceDamage(dbUser, args.item.damage);
     const shotUser = await msg.client.users.get(args.member.id);

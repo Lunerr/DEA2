@@ -25,7 +25,7 @@ class Shoot extends patron.Command {
           key: 'item',
           type: 'item',
           example: 'intervention',
-          preconditions: ['donthave', { name: 'nottype', options: { type: 'gun', type2: 'launcher' } }],
+          preconditions: ['donthave', { name: 'nottype', options: { types: ['gun'] } }],
           remainder: true
         })
       ]
@@ -34,12 +34,8 @@ class Shoot extends patron.Command {
 
   async run(msg, args) {
     const roll = Random.roll();
-    const kevlar = Constants.items.armour;
     const dbUser = await db.userRepo.getUser(args.member.id, msg.guild.id);
-    const bullet = 'inventory.bullet';
-    const rocket = 'inventory.rocket';
     const damage = await ItemService.reduceDamage(dbUser, args.item.damage);
-
     const user = await msg.client.users.get(args.member.id);
 
     if (roll <= args.item.accuracy) {
@@ -58,14 +54,10 @@ class Shoot extends patron.Command {
         await msg.createReply('Nice shot, you just dealt ' + damage + ' damage to ' + args.member.user.tag.boldify() + '.');
       }
     } else {
-      await msg.createReply('The nigga fucking dodged the bullet, literally. What in the sac of nuts.');
+      await msg.createReply('The nigga fucking dodged the ' + args.item.bullet + ', literally. What in the sac of nuts.');
     }
 
-    if (args.item.type === 'gun') {
-      await db.userRepo.updateUser(msg.author.id, msg.guild.id, { $inc: { [bullet]: -1 } });
-    } else if (args.item.type === 'launcher') {
-      await db.userRepo.updateUser(msg.author.id, msg.guild.id, { $inc: { [rocket]: -1 } });
-    }
+    return db.userRepo.updateUser(msg.author.id, msg.guild.id, { $inc: { [msg.bullet]: -1 } });
   }
 }
 
