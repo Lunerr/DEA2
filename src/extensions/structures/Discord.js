@@ -146,7 +146,7 @@ discord.Message.prototype.sendEmbed = function (commandEmbed, options = {}) {
 Object.defineProperty(discord.Guild.prototype, 'mainChannel', {
   get: function () {
     const generalChannel = this.channels.find((x) => { 
-      x.name === 'general' && (x.name === 'general' || x.name.includes('main'));
+      x.type === 'text' && (x.name === 'general' || x.name.includes('main'));
     });
 
     if (generalChannel !== null) {

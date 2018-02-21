@@ -25,7 +25,7 @@ module.exports = async (client) => {
 
       await guild.mainChannel.createMessage(question, { title: 'Trivia!' });
 
-      const result = await guild.mainChannel.awaitMessages((m) => m.content.includes(answer), { time: 90000, maxMatches: 1 });
+      const result = await guild.mainChannel.awaitMessages((m) => m.content.toLowerCase().includes(answer.toLowerCase()), { time: 90000, maxMatches: 1 });
 
       if (result.size >= 1) {
         const prize = Random.nextInt(500, 10000);
