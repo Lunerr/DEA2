@@ -17,13 +17,13 @@ client.on('message', (msg) => {
 
     const inGuild = msg.guild !== null;
 
-    if (Constants.data.regexes.prefix.test(msg.content) === false) {
-      return inGuild === true && msg.member !== null ? ChatService.applyCash(msg) : null;
-    }
-
     if (msg.guild !== null) {
       msg.dbUser = await db.userRepo.getUser(msg.author.id, msg.guild.id);
       msg.dbGuild = await db.guildRepo.getGuild(msg.guild.id);
+    }
+
+    if (Constants.data.regexes.prefix.test(msg.content) === false) {
+      return inGuild === true && msg.member !== null ? ChatService.applyCash(msg) : null;
     }
     
 
