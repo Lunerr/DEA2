@@ -28,14 +28,14 @@ class JoinGang extends patron.Command {
       return msg.createErrorReply('Sorry, this gang is too full.');
     }
 
-    const leader = msg.client.users.get(args.gang.leaderId);
+    const leader = await msg.client.users.get(args.gang.leaderId);
   
     if (leader !== null) {
       const key = Random.nextInt(0, 2147000000).toString();
       
       await leader.tryDM(msg.author.tag.boldify() + ' is trying to join your gang, reply with "' + key + '" within the next 5 minutes to accept this.', { guild: msg.guild });
       await msg.createReply('The leader of this gang has successfully been informed of your join request.');
-
+      
       if (leader.dmChannel === null) {
         await leader.createDM();
       }

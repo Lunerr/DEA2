@@ -49,7 +49,7 @@ class Trade extends patron.Command {
   async run(msg, args) {
     const key = Random.nextInt(0, 2147000000).toString();
     const dbUser = await db.userRepo.getUser(args.member.id, msg.guild.id);
-    const user = msg.client.users.get(args.member.id);
+    const user = await msg.client.users.get(args.member.id);
 
     if (dbUser.inventory[args.item2.names[0]] === undefined || dbUser.inventory[args.item2.names[0]] <= 0 || dbUser.inventory[args.item2.names[0]] < args.amount2 || dbUser.inventory[args.item2.names[0]] - args.amount2 < 0) {
       return msg.createErrorReply('User doesn\'t enough of this item.');
@@ -59,6 +59,10 @@ class Trade extends patron.Command {
 
     await user.tryDM(msg.author.tag.boldify() + ' is asking to trade you ' + args.amount + ' of ' + ItemService.capitializeWords(args.item.names[0]) + ' for ' + args.amount2 + ' of ' + ItemService.capitializeWords(args.item2.names[0]) + ' reply with "' + key + '" within the next 5 minutes to accept this trade.', { guild: msg.guild });
     await msg.createReply('The user has been informed of this trade.');
+
+    if (leader.dmChannel === null) {
+      await leader.createDM();
+    }
 
     const result = await user.dmChannel.awaitMessages((m) => m.author.id === user.id && m.content.includes(key), { time: 300000, maxMatches: 1 });
 

@@ -12,7 +12,7 @@
     "awesome-electron": "^2.5.0",
     "colors": "^1.1.2",
     "danbooru": "^2.0.3",
-    "discord.js": "^11.2.1",
+    "discord.js": "^11.3.2",
     "mongodb": "^2.2.33",
     "patron.js": "github:lunerr/patron.js",
     "pluralize": "^7.0.0",

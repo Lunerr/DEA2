@@ -14,7 +14,7 @@ patron.RequireAll(path.join(__dirname, 'events'));
 IntervalService.initiate(client);
 
 (async () => {
-  client.login(process.env.BOT_TOKEN);
-  db.connect(process.env.MONGO_DB_URL);
+  client.login(credentials.token);
+  db.connect(credentials.mongodbConnectionURL);
 })()
   .catch((err) => console.log(err));
