@@ -13,11 +13,11 @@ class CashPercent extends patron.ArgumentPrecondition {
     const dbUser = await db.userRepo.getUser(msg.memberArg.id, msg.guild.id);
     const cashValue = NumberUtil.realValue(dbUser.cash);
 
-    if (cashValue * options.precent >= value) {
+    if (cashValue * options.percent >= value) {
       return patron.PreconditionResult.fromSuccess();
     }
 
-    return patron.PreconditionResult.fromError(command, 'The maximum percent of ' + argument.name + ' is ' + (options.precent * 100) + '%. That is ' + (cashValue * options.precent).USD() + '.');
+    return patron.PreconditionResult.fromError(command, 'The maximum percent of ' + argument.name + ' is ' + (options.percent * 100) + '%. That is ' + (cashValue * options.percent).USD() + '.');
   }
 }
 

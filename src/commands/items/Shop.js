@@ -22,7 +22,8 @@ class Shop extends patron.Command {
           key: 'amount',
           type: 'quantity',
           example: '2',
-          defaultValue: 1
+          defaultValue: 1,
+          remainder: true
         })
       ]
     });
