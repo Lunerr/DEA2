@@ -6,7 +6,7 @@ class UpdateUser extends patron.Command {
     super({
       names: ['updateuser'],
       groupName: 'botowners',
-      description: 'Update any user in the DEA database.',
+      description: 'Update any user in the VABot database.',
       args: [
         new patron.Argument({
           name: 'user',
