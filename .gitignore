@@ -2,7 +2,6 @@
 node_modules/
 
 # Authentication
-credentials.json
 
 # Miscellaneous
 .vscode/
