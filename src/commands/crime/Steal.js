@@ -9,8 +9,7 @@ class Steal extends patron.Command {
       names: ['steal'],
       groupName: 'crime',
       description: 'Hop the big guns and lick a store.',
-      cooldown: Constants.config.steal.cooldown,
-      preconditions: [{ name: 'top', options: { top: 10 } }]
+      cooldown: Constants.config.steal.cooldown
     });
   }
 

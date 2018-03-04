@@ -10,7 +10,6 @@ class Rob extends patron.Command {
       groupName: 'crime',
       description: 'Use your cash to rob a user.',
       cooldown: Constants.config.rob.cooldown,
-      preconditions: [{ name: 'top', options: { top: 25 } }],
       args: [
         new patron.Argument({
           name: 'member',
