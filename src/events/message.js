@@ -11,21 +11,21 @@ const handler = new patron.Handler(registry);
 
 client.on('message', (msg) => {
   (async () => {
-    if (msg.author.bot || Constants.data.regexes.prefix.test(msg.content) === false) {
+    if (msg.author.bot) {
       return;
     }
 
-    const blacklisted = await db.blacklistRepo.findBlacklist(msg.author.id);
+    const inGuild = msg.guild !== null;
 
-    if (blacklisted) {
-      return;
+    if (Constants.data.regexes.prefix.test(msg.content) === false) {
+      return inGuild === true && msg.member !== null ? ChatService.applyCash(msg) : null;
     }
 
     if (msg.guild !== null) {
       msg.dbUser = await db.userRepo.getUser(msg.author.id, msg.guild.id);
       msg.dbGuild = await db.guildRepo.getGuild(msg.guild.id);
-      ChatService.applyCash(msg);
     }
+    
 
     const result = await handler.run(msg, Constants.data.misc.prefix);
 
@@ -67,8 +67,12 @@ client.on('message', (msg) => {
           break;
       }
 
+      await Logger.log('Unsuccessful command result: ' + msg.id + ' | Reason: ' + result.errorReason, 'DEBUG');
+
       return msg.tryCreateErrorReply(message);
     }
+
+    return Logger.log('Successful command result: ' + msg.id, 'DEBUG');
   })()
     .catch((err) => Logger.handleError(err));
 });
