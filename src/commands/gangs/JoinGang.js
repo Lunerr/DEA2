@@ -35,12 +35,8 @@ class JoinGang extends patron.Command {
       
       await leader.tryDM(msg.author.tag.boldify() + ' is trying to join your gang, reply with "' + key + '" within the next 5 minutes to accept this.', { guild: msg.guild });
       await msg.createReply('The leader of this gang has successfully been informed of your join request.');
-      
-      if (leader.dmChannel === null) {
-        await leader.createDM();
-      }
 
-      const result = await leader.dmChannel.awaitMessages((m) => m.author.id === leader.id && m.content.includes(key), { time: 300000, maxMatches: 1 });
+      const result = await leader.dmChannel.awaitMessages(m => m.author.id === leader.id && m.content.includes(key), { time: 300000, maxMatches: 1 });
 
       if (result.size >= 1) {
         await db.gangRepo.updateGang(args.gang.leaderId, msg.guild.id, { $push: { members: msg.author.id } });
@@ -48,7 +44,6 @@ class JoinGang extends patron.Command {
         return msg.author.tryDM('You\'ve successfully joined gang ' + args.gang.name.boldify() + '.', { guild: msg.guild });
       }
 
-      await leader.tryDM('Time\'s up.', { guild: msg.guild });
       return msg.author.tryDM(leader.tag.boldify() + ' didn\'t respond to your join request.', { guild: msg.guild });
     }
 

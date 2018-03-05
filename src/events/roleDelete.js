@@ -2,8 +2,8 @@ const db = require('../database');
 const client = require('../singletons/client.js');
 const Logger = require('../utility/Logger.js');
 
-client.on('roleDelete', () => {
-  (async (role) => {
+client.on('roleDelete', (role) => {
+  (async () => {
     const dbGuild = await db.guildRepo.getGuild(role.guild.id);
 
     if (dbGuild.roles.rank.some((v) => v.id === role.id)) {
