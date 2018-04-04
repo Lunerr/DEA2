@@ -1,58 +1,30 @@
 [
   {
-    "names": ["old crate", "old crates", "old"],
-    "type": "crate",
-    "description": "Rusty old crate, probably has rats inside",
-    "price": 200,
-    "item_odds": 5
-  },
-  {
     "names": ["bronze crate", "bronze crates", "bronze"],
     "type": "crate",
     "description": "The standard stuff.",
     "price": 1000,
-    "item_odds":  15
+    "item_odds":  5
   },
   {
     "names": ["silver crate", "silver crates", "silver"],
     "type": "crate",
     "description": "Shiny silvery, real good.",
     "price": 5000,
-    "item_odds": 20
+    "item_odds": 25
   },
   {
     "names": ["gold crate", "gold crates", "gold"],
     "type": "crate",
     "description": "The reason it costs a lot is because you need to pay the expenses for the gold.",
     "price": 20000,
-    "item_odds": 25
-  },
-  {
-    "names": ["platinum crate", "platinum crates", "platinum"],
-    "type": "crate",
-    "description": "Silver but better and shinier",
-    "price": 50000,
-    "item_odds": 40
-  },
-  {
-    "names": ["rainbow crate", "rainbow crates", "rainbow"],
-    "type": "crate",
-    "description": "Eat the rainbow.",
-    "price": 127500000,
-    "item_odds": 70
-  },
-  {
-    "names": ["diamond crate", "diamond crates", "diamond"],
-    "type": "crate",
-    "description": "A crate made from pure diamonds.",
-    "price": 175000000000,
     "item_odds": 100
   },
   {
     "names": ["kevlar", "armour", "armor"],
     "type": "armour",
     "description": "You won't even feel the bullet wearing this thing.",
-    "damageReduction": 20,
+    "damage_reduction": 20,
     "crate_odds": 30
   },
   {
@@ -61,13 +33,6 @@
     "description": "Narly stuff.",
     "acquire_odds": 30,
     "health": 15
-  },
-  {
-    "names": ["nemo"],
-    "type": "fish",
-    "description": "How did he escape from my toilet?",
-    "acquire_odds": 24,
-    "health": 20
   },
   {
     "names": ["shrimp"],
@@ -80,137 +45,51 @@
     "names": ["swordfish"],
     "type": "fish",
     "description": "Pointy nose, might kill.",
-    "acquire_odds": 15,
-    "health": 30
-  },
-  {
-    "names": ["octopus"],
-    "type": "fish",
-    "description": "Sticky but tasty, along with its family.",
     "acquire_odds": 10,
-    "health": 35
-  },
-  {
-    "names": ["whale"],
-    "type": "fish",
-    "description": "Fat fuck got spanked before killed.",
-    "acquire_odds": 6,
-    "health": 40
+    "health": 30
   },
   {
     "names": ["shark"],
     "type": "fish",
     "description": "Better be careful when eating this.",
-    "acquire_odds": 3,
+    "acquire_odds": 5,
     "health": 50
   },
   {
     "names": ["glock"],
     "type": "gun",
-    "bullet": "pistol ammo",
+    "bullet": "pistol bullet",
     "description": "Weakest gun in town. Man up a bit you puss.",
     "damage": 15,
     "accuracy": 30,
     "crate_odds": 40
   },
   {
-    "names": ["rusty pistol"],
-    "type": "gun",
-    "bullet": "pistol ammo",
-    "description": "This pistol was found in an ocean. Covered in rust, seems if it would never work",
-    "damage": 1,
-    "accuracy": 1,
-    "crate_odds": 99
-  },
-  {
-    "names": ["pump action", "pump"],
-    "type": "gun",
-    "bullet": "shotgun shell",
-    "description": "Get those niggers off your lawn, *wait that was racist, fuck*.",
-    "damage": 60,
-    "accuracy": 35,
-    "crate_odds": 35
-  },
-  {
-    "names": ["water gun"],
-    "type": "gun",
-    "bullet": "water",
-    "description": "Dylan got wet boi",
-    "damage": 99,
-    "accuracy": 99,
-    "crate_odds": 1
-  },
-  {
     "names": ["revolver"],
     "type": "gun",
-    "bullet": "pistol ammo",
+    "bullet": "pistol bullet",
     "description": "Slam a nigga's cock in a bridge so damn hard.",
     "damage": 20,
     "accuracy": 35,
     "crate_odds": 30
   },
   {
-    "names": ["m1911", "1911"],
-    "type": "gun",
-    "bullet": "pistol ammo",
-    "description": "The only gun that proves you are a male.",
-    "damage": 50,
-    "accuracy": 40,
-    "crate_odds": 28
-  },
-  {
     "names": ["ar15"],
     "type": "gun",
-    "bullet": "rifle ammo",
+    "bullet": "rifle bullet",
     "description": "Assault fire. Assault weapon. Assault feminists. *Oh fuck dude I don't think we are allowed to put that kinda joke.*",
     "damage": 40,
     "accuracy": 50,
     "crate_odds": 25
   },
   {
-    "names": ["ak-47", "ak47"],
-    "type": "gun",
-    "bullet": "rifle ammo",
-    "description": "***Starts playing the National anthem of Russia.***",
-    "damage": 50,
-    "accuracy": 60,
-    "crate_odds": 23
-  },
-  {
-    "names": ["desert eagle", "deagle"],
-    "type": "gun",
-    "bullet": "pistol ammo",
-    "description": "The only gun you can tear off a head with.",
-    "damage": 60,
-    "accuracy": 45,
-    "crate_odds": 20
-  },
-  {
-    "names": ["barrett M107A1", "barrett m107a1", "barrett", "barrett 50 cal", "barrett .50 cal"],
-    "type": "gun",
-    "bullet": "sniper ammo",
-    "description": "If you spray this then that confirms you have a tiny pecker.",
-    "damage": 75,
-    "accuracy": 65,
-    "crate_odds": 10
-  },
-  {
     "names": ["intervention"],
     "type": "gun",
-    "bullet": "sniper ammo",
+    "bullet": "sniper bullet",
     "description": "The only weapon that affirms you have a large penis.",
     "damage": 90,
     "accuracy": 75,
     "crate_odds": 3
-  },
-  {
-    "names": ["rocket launcher", "launcher"],
-    "type": "gun",
-    "bullet": "rocket",
-    "description": "HELL YEAH BLOW THAT NIGGER UP *wait fuck that's racist.*",
-    "damage": 105,
-    "accuracy": 70,
-    "crate_odds": 2
   },
   {
     "names": ["kitchen knife"],
@@ -219,70 +98,6 @@
     "damage": 5,
     "accuracy": 20,
     "crate_odds": 75
-  },
-  {
-    "names": ["rusty knife"],
-    "type": "knife",
-    "description": "Found this in a lake, seems if someone used it for murder than left the knife to rust.",
-    "damage": 1,
-    "accuracy": 1,
-    "crate_odds": 99
-  },
-  {
-   "names": ["dildo"],
-   "type": "knife",
-   "description": "Generic sex toy, seems sticky",
-   "damage": 25,
-   "accuracy": 30,
-   "crate_odds": 42
-  },
-  {
-   "names": ["dragon dildo"],
-   "type": "knife",
-   "description": "Big Man's sex you. May leave a gaping hole.",
-   "damage": 65,
-   "accuracy": 65,
-   "crate_odds": 30
-  },
-  {
-   "names": ["pink dragon dildo"],
-   "type": "knife",
-   "description": "Only a real man plays with this bad boy.",
-   "damage": 95,
-   "accuracy": 80,
-   "crate_odds": 5
-  },
-  {
-    "names": ["hatchet"],
-    "type": "knife",
-    "description": "An axe for wimps",
-    "damage": 30,
-    "accuracy": 25,
-    "crate_odds": 50
-   },
-   {
-    "names": ["axe"],
-    "type": "knife",
-    "description": "Time to hunt some bear.",
-    "damage": 45,
-    "accuracy": 30,
-    "crate_odds": 40
-   },
-   {
-    "names": ["golden axe"],
-    "type": "knife",
-    "description": "Axe but made from gold.",
-    "damage": 70,
-    "accuracy": 45,
-    "crate_odds": 25
-   },
-   {
-    "names": ["sledgehammer"],
-    "type": "knife",
-    "description": "CRUSH the skulls of your enemies.",
-    "damage": 65,
-    "accuracy": 50,
-    "crate_odds": 30
   },
   {
     "names": ["butterfly knife"],
@@ -301,44 +116,12 @@
     "crate_odds": 25
   },
   {
-    "names": ["shovel"],
-    "type": "knife",
-    "description": "Emily don't! Oh my gooooddddd.",
-    "damage": 35,
-    "accuracy": 55,
-    "crate_odds": 20
-  },
-  {
-    "names": ["gladiator sword", "gladiator"],
-    "type": "knife",
-    "description": "THIS IS __***SPARTA***__",
-    "damage": 50,
-    "accuracy": 60,
-    "crate_odds": 15
-  },
-  {
     "names": ["karambit", "karambit knife"],
     "type": "knife",
     "description": "Prestige pouring out left and right.",
     "damage": 45,
     "accuracy": 70,
-    "crate_odds": 10
-  },
-  {
-    "names": ["katana", "samurai sword"],
-    "type": "knife",
-    "description": "Oni-chan no!",
-    "damage": 50,
-    "accuracy": 80,
     "crate_odds": 6
-  },
-  {
-    "names": ["water knife"],
-    "type": "knife",
-    "description": "I STABB U WITH MY WATER OOOOOOOH",
-    "damage": 125,
-    "accuracy": 100,
-    "crate_odds": 0
   },
   {
     "names": ["huntsman knife", "huntsman"],
@@ -363,45 +146,18 @@
     "health": 20
   },
   {
-    "names": ["pork"],
-    "type": "meat",
-    "description": "Yeet fucked those pigs up.",
-    "acquire_odds": 15,
-    "health": 25
-  },
-  {
-    "names": ["lion"],
-    "type": "meat",
-    "description": "Lil fucker was fast.",
-    "acquire_odds": 10,
-    "health": 30
-  },
-  {
     "names": ["bear meat", "bear"],
     "type": "meat",
     "description": "Better be worth it, was hard to get.",
-    "acquire_odds": 6,
-    "health": 35
-  },
-  {
-    "names": ["water"],
-    "type": "meat",
-    "description": "Drink up big man",
-    "acquire_odds": 0,
-    "health": 99
+    "acquire_odds": 10,
+    "health": 30
   },
   {
     "names": ["bear grylls meat", "bear grylls"],
     "type": "meat",
     "description": "Literally from the man himself.",
-    "acquire_odds": 3,
+    "acquire_odds": 5,
     "health": 50
-  },
-  {
-    "names": ["rocket", "rockets"],
-    "type": "bullet",
-    "description": "Lmao blow those bastards up with this ammunation.",
-    "crate_odds": 10
   },
   {
     "names": ["sniper bullet", "sniper ammo", "sniper ammunition", "sniper bullets"],
@@ -416,21 +172,9 @@
     "crate_odds": 90
   },
   {
-    "names": ["shotgun shell", "shotgun shells", "shotgun ammunition", "shotgun bullet", "shotgun bullets", "shotgun ammo"],
-    "type": "bullet",
-    "description": "Imagine coding like lumite ROFL",
-    "crate_odds": 80
-  },
-  {
     "names": ["rifle bullet", "rifle ammo", "rifle ammunition", "rile bullets"],
     "type": "bullet",
     "description": "Vim2meta more like dead channel",
     "crate_odds": 70
-  },
-  {
-    "names": ["water"],
-    "type": "bullet",
-    "description": "dylan sucks penis at video games",
-    "crate_odds": 40
   }
 ]

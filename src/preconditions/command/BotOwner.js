@@ -1,5 +1,5 @@
 const patron = require('patron.js');
-const credentials = require('../../credentials.json');
+const Constants = require('../../utility/Constants.js');
 
 class BotOwner extends patron.Precondition {
   constructor() {
@@ -9,7 +9,7 @@ class BotOwner extends patron.Precondition {
   }
 
   async run(command, msg) {
-    if (credentials.ownerIds.some((v) => v === msg.author.id)) {
+    if (Constants.data.misc.ownerIds.some((v) => v === msg.author.id)) {
       return patron.PreconditionResult.fromSuccess();
     }
 

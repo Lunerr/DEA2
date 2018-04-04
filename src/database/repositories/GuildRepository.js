@@ -37,6 +37,10 @@ class GuildRepository extends BaseRepository {
 
     return this.findOneAndUpdate(new Guild(guildId), update, true);
   }
+
+  deleteGuild(guildId) {
+    return this.deleteOne(new GuildQuery(guildId));
+  }
 }
 
 module.exports = GuildRepository;

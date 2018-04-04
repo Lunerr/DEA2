@@ -13,6 +13,11 @@ class Trivia extends patron.Command {
 
   async run(msg, args) {
     const questions = Object.keys(msg.dbGuild.trivia);
+
+    if (questions.length <= 0) {
+      return msg.channel.createErrorReply('This guild has no trivia questions set.');
+    }
+    
     const question = Random.arrayElement(questions);
     const answerIndex = questions.findIndex(x => x === question);
     const answer = Object.values(msg.dbGuild.trivia)[answerIndex];

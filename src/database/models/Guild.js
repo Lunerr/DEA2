@@ -1,3 +1,5 @@
+const items = require('../../data/items.json');
+
 class Guild {
   constructor(guildId) {
     this.guildId = guildId;
@@ -18,6 +20,7 @@ class Guild {
     };
     this.autoTrivia = true;
     this.trivia = {};
+    this.items = items;
   }
 }
 

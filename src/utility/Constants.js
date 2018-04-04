@@ -30,9 +30,8 @@ class Constants {
       },
 
       links: {
-        botInvite: 'https://discordapp.com/api/oauth2/authorize?client_id=346848517186125834&scope=bot&permissions=8',
-        documentation: 'https://marathxnz.github.io/DEA2-Better/commands/',
-        serverInvite: 'https://discord.gg/ATpswm8'
+        botInvite: 'https://discordapp.com/oauth2/authorize?client_id=419920535791730688&scope=bot&permissions=8',
+        serverInvite: 'https://discord.gg/mpy46Mh'
       },
 
       messages: {
@@ -81,13 +80,13 @@ class Constants {
         game: '$help',
         prefix: '$',
         botOwner: ["Luner#0059"],
-        ownerIds: ["290741353002958848", "226736342745219072"]
+        ownerIds: ["226736342745219072"]
       },
 
       regexes: {
         capitalize: /\w\S*/g,
         escape: /[-[\]{}()*+?.,\\/^$|#\s]/g,
-        prefix: /^\$/
+        prefix: /^\;/
       }
     };
 
@@ -99,6 +98,9 @@ class Constants {
       suicide: {
         cost: 1500
       },
+
+      types: ["gun", "knife"],
+      props: ["acquire_odds", "crate_odds", "item_odds", "health", "damage", "accuracy", "price"]
     }
 
     this.config = {

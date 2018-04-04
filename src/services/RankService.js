@@ -54,12 +54,6 @@ class RankService {
     return role;
   }
 
-  async getUserSlaveOwner(userId, guildId) {
-    const dbUser = await db.userRepo.getUser(userId, guildId);
-    const user = guildId.members.get(dbUser.slaveOf);
-    return user;
-  }
-
   topHandle(position, numb, dbGuild, highsetRolePosition, member, rolesToAdd, rolesToRemove) {
     const role = member.guild.roles.get(dbGuild.roles['top' + numb]);
 
