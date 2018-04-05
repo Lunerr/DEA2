@@ -99,8 +99,8 @@ class Constants {
         cost: 1500
       },
 
-      types: ["gun", "knife"],
-      props: ["acquire_odds", "crate_odds", "item_odds", "health", "damage", "accuracy", "price"]
+      types: ["gun", "knife", "meat", "fish", "crate", "armour", "ammo"],
+      props: ["acquire_odds", "crate_odds", "item_odds", "health", "damage", "accuracy", "price", "bullet"]
     }
 
     this.config = {

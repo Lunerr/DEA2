@@ -25,6 +25,7 @@ class Eat extends patron.Command {
     await db.userRepo.updateUser(msg.author.id, msg.guild.id, { $inc: { health: args.item.health } });
     const dbUser = await db.userRepo.getUser(msg.author.id, msg.guild.id);
     let reply = '';
+    
     if (dbUser.health > 100) {
       await db.userRepo.updateUser(msg.author.id, msg.guild.id, { $set: { health: 100 } });
       const newDbUser = await db.userRepo.getUser(msg.author.id, msg.guild.id);

@@ -16,7 +16,7 @@ class Hunt extends patron.Command {
           key: 'item',
           type: 'item',
           example: 'intervention',
-          preconditions: ['donthave', { name: 'nottype', options: { types: ['fish', 'meat'] } }],
+          preconditions: ['donthave', { name: 'nottype', options: { types: ['gun', 'knife'] } }],
           remainder: true
         })
       ]
@@ -24,22 +24,22 @@ class Hunt extends patron.Command {
   }
 
   async run(msg, args) {
-    const bullet = 'inventory.bullet';
-    const rocket = 'inventory.rocket';
     const caught = await ItemService.hunt(args.item);
+    let reply = '';
 
     if (caught !== undefined) {
       const gained = 'inventory.' + caught.names[0];
       await db.userRepo.updateUser(msg.author.id, msg.guild.id, { $inc: { [gained]: 1 } });
+      reply = 'Clean kill. Boss froth. Smooth beans. You got: ' + ItemService.capitializeWords(caught.names[0]) + '.';
+    } else {
+      reply = 'Nigga you just about had that deer but then he did that hoof kick thing and fucked up your buddy Chuck, so then you had to go bust a nut all over him and the GODDAMN deer got away.';
     }
 
     if (args.item.type === 'gun') {
       await db.userRepo.updateUser(msg.author.id, msg.guild.id, { $inc: { [bullet]: -1 } });
-    } else if (args.item.type === 'launcher') {
-      await db.userRepo.updateUser(msg.author.id, msg.guild.id, { $inc: { [rocket]: -1 } });
     }
 
-    return msg.createReply((caught !== undefined ? 'Clean kill. Boss froth. Smooth beans. You got: ' + ItemService.capitializeWords(caught.names[0]) : 'Nigga you just about had that deer but then he did that hoof kick thing and fucked up your buddy Chuck, so then you had to go bust a nut all over him and the GODDAMN deer got away.'));
+    return msg.createReply(reply);
   }
 }
 

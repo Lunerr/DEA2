@@ -11,7 +11,7 @@ class TypeTypeReader extends patron.TypeReader {
       return patron.TypeReaderResult.fromSuccess(input);
     }
 
-    return patron.TypeReaderResult.fromError(command, 'There is no such item type such as ' + input + '.');
+    return patron.TypeReaderResult.fromError(command, 'There is no such item type such as ' + input + ', please use `' + Constants.data.misc.prefix + 'itemtypes` to see all the current item types.');
   }
 }
 
