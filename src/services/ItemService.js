@@ -49,7 +49,7 @@ class ItemService {
     return itemsWon;
   }
 
-  fish(weapon) {
+  fish(weapon, items) {
     const roll = Random.roll();
     const food = items.filter(x => x.type === 'fish').sort((a, b) => a.acquire_odds - b.acquire_odds);
     const rollOdds = Random.nextInt(1, 109);
@@ -66,7 +66,7 @@ class ItemService {
     }
   }
 
-  hunt(weapon) {
+  hunt(weapon, items) {
     const roll = Random.roll();
     const food = items.filer(x => x.type === 'meat').sort((a, b) => a.acquire_odds - b.acquire_odds);
     const rollOdds = Random.nextInt(1, 84);
@@ -83,7 +83,7 @@ class ItemService {
     }
   }
 
-  reduceDamage(dbUser, damage) {
+  reduceDamage(dbUser, damage, items) {
     const armours = items.filter(x => x.type === 'armour');
     let reduce = damage;
     

@@ -24,7 +24,7 @@ class Fish extends patron.Command {
   }
 
   async run(msg, args) {
-    const caught = await ItemService.fish(args.item);
+    const caught = await ItemService.fish(args.item, msg.dbGuild.items);
     let reply = '';
 
     if (caught !== undefined) {

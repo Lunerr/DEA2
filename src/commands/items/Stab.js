@@ -35,7 +35,7 @@ class Stab extends patron.Command {
   async run(msg, args) {
     const roll = Random.roll();
     const dbUser = await db.userRepo.getUser(args.member.id, msg.guild.id);
-    const damage = await ItemService.reduceDamage(dbUser, args.item.damage);
+    const damage = await ItemService.reduceDamage(dbUser, args.item.damage, msg.dbGuild.items);
     const shotUser = await msg.client.users.get(args.member.id);
 
     if (roll <= args.item.accuracy) {

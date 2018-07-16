@@ -24,7 +24,7 @@ class Hunt extends patron.Command {
   }
 
   async run(msg, args) {
-    const caught = await ItemService.hunt(args.item);
+    const caught = await ItemService.hunt(args.item, msg.dbGuild.items);
     let reply = '';
 
     if (caught !== undefined) {
