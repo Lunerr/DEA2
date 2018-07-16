@@ -68,7 +68,7 @@ class ItemService {
 
   hunt(weapon, items) {
     const roll = Random.roll();
-    const food = items.filer(x => x.type === 'meat').sort((a, b) => a.acquire_odds - b.acquire_odds);
+    const food = items.filter(x => x.type === 'meat').sort((a, b) => a.acquire_odds - b.acquire_odds);
     const rollOdds = Random.nextInt(1, 84);
     let cumulative = 0;
 
