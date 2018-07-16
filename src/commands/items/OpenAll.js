@@ -36,7 +36,7 @@ class OpenAll extends patron.Command {
       openAmount = msg.dbUser.inventory[args.item.names[0]];
     }
     
-    const item = await ItemService.massOpenCrate(openAmount, args.item);
+    const item = await ItemService.massOpenCrate(openAmount, args.item, msg.dbGuild.items);
 
     await db.userRepo.updateUser(msg.author.id, msg.guild.id, { $inc: { [cases]: -openAmount } });
 

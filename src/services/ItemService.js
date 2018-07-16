@@ -1,15 +1,19 @@
 const db = require('../database');
 const Random = require('../utility/Random.js');
 const Constants = require('../utility/Constants.js');
-const items = require('../data/items.json');
 
 class ItemService {
-  async openCrate(crate) {
+
+  async openCrate(crate, items) {
     const roll = Random.roll();
-    const rollWeapon = Random.nextInt(1, 747);
-    const rollAmmo = Random.nextInt(1, 340);
-    const weapons = items.filter(x => x.type === 'gun' || x.type === 'knife').sort((a, b) => a.crate_odds - b.crate_odds);
-    const ammunation = items.filter(x => x.type === 'bullet').sort((a, b) => a.crate_odds - b.crate_odds);
+    const weapons = items.filter(x => x.type === 'gun' || x.type === 'knife').filter(x => x.crate_odds !== undefined).sort((a, b) => a.crate_odds - b.crate_odds);
+    const fullWeaponOdds = weapons.map(x => x.crate_odds).reduce((accumulator, currentValue) => accumulator + currentValue);
+    const rollWeapon = Random.nextInt(1, fullWeaponOdds);
+    const ammunation = items.filter(x => x.type === 'bullet' && x.crate_odds !== undefined).filter(x => x.crate_odds !== undefined).sort((a, b) => a.crate_odds - b.crate_odds);
+    const fullAmmunationOdds = ammunation.map(x => x.crate_odds).reduce((accumulator, currentValue) => accumulator + currentValue);
+    const rollAmmo = Random.nextInt(1, fullAmmunationOdds);
+    console.log(fullAmmunationOdds);
+    console.log(fullWeaponOdds);
     let cumulativeWeapons = 0;
     let cumulativeAmmunition = 0;
 
@@ -32,11 +36,11 @@ class ItemService {
     }
   }
 
-  async massOpenCrate(quanity, crate) {
+  async massOpenCrate(quanity, crate, items) {
     const itemsWon = {};
 
     for (let i = 0; i < quanity; i++) {
-      const item = await this.openCrate(crate);
+      const item = await this.openCrate(crate, items);
 
       if (itemsWon.hasOwnProperty(item.names[0]) === false) {
         itemsWon[item.names[0]] = 0;
