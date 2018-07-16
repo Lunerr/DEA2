@@ -51,8 +51,9 @@ class ItemService {
 
   fish(weapon, items) {
     const roll = Random.roll();
-    const food = items.filter(x => x.type === 'fish').sort((a, b) => a.acquire_odds - b.acquire_odds);
-    const rollOdds = Random.nextInt(1, 109);
+    const food = items.filter(x => x.type === 'fish').filter(x => x.crate_odds !== undefined).sort((a, b) => a.crate_odds - b.crate_odds);
+    const fullFoodOdds = food.map(x => x.crate_odds).reduce((accumulator, currentValue) => accumulator + currentValue);
+    const rollOdds = Random.nextInt(1, fullFoodOdds);
     let cumulative = 0;
 
     if (roll <= weapon.accuracy) {
@@ -68,8 +69,9 @@ class ItemService {
 
   hunt(weapon, items) {
     const roll = Random.roll();
-    const food = items.filter(x => x.type === 'meat').sort((a, b) => a.acquire_odds - b.acquire_odds);
-    const rollOdds = Random.nextInt(1, 84);
+    const food = items.filter(x => x.type === 'meat').filter(x => x.crate_odds !== undefined).sort((a, b) => a.crate_odds - b.crate_odds);
+    const fullFoodOdds = food.map(x => x.crate_odds).reduce((accumulator, currentValue) => accumulator + currentValue);
+    const rollOdds = Random.nextInt(1, fullFoodOdds);
     let cumulative = 0;
 
     if (roll <= weapon.accuracy) {
