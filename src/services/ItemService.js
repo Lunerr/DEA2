@@ -12,8 +12,6 @@ class ItemService {
     const ammunation = items.filter(x => x.type === 'bullet' && x.crate_odds !== undefined).filter(x => x.crate_odds !== undefined).sort((a, b) => a.crate_odds - b.crate_odds);
     const fullAmmunationOdds = ammunation.map(x => x.crate_odds).reduce((accumulator, currentValue) => accumulator + currentValue);
     const rollAmmo = Random.nextInt(1, fullAmmunationOdds);
-    console.log(fullAmmunationOdds);
-    console.log(fullWeaponOdds);
     let cumulativeWeapons = 0;
     let cumulativeAmmunition = 0;
 
